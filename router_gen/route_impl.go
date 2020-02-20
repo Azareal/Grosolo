@@ -101,14 +101,6 @@ func MemberView(fname string, path string, args ...string) *RouteImpl {
 	return route
 }
 
-func ModView(fname string, path string, args ...string) *RouteImpl {
-	route := route(fname, path, false, false, args...)
-	if !route.hasBefore("AdminOnly") {
-		route.Before("SuperModOnly")
-	}
-	return route
-}
-
 func Action(fname string, path string, args ...string) *RouteImpl {
 	route := route(fname, path, true, false, args...)
 	route.Before("NoSessionMismatch")
